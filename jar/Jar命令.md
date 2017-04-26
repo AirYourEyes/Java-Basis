@@ -73,5 +73,6 @@
   - 引用其他的jar文件
       - 格式：Class-Path： jar1-name, jar2-name, jar3-name, directory-name/jar-name
       - 使用Class-Path这种方式指定引用jar文件的路径可以避免在运行时执行冗长的-classpath标志的情况
-      - Class-Path的值只能是**本地jar或类文件，不能是内嵌在jar中或者通过网络协议得到的jar或类文件。**例如：MyJar.jar包含MuUtils.jar文件，你不能使用MyJar.jar的清单文件来将MyUtils.jar的类文件加载到类路径当中
+      - Class-Path的值只能是**本地jar或类文件，不能是内嵌在jar中或者通过网络协议得到的jar或类文件。
+      **例如：MyJar.jar包含MuUtils.jar文件，你不能使用MyJar.jar的清单文件来将MyUtils.jar的类文件加载到类路径当中**
 

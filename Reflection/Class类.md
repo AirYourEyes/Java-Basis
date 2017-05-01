@@ -31,16 +31,22 @@
   - 负责类加载工作的类
 - 种类
   - 启动类加载器（Boostrap ClassLoader）
-      - 使用C++代码编写
-      - 负责Java平台核心库的加载，如java.lang包
-      - 无法直接获取
+      - 通常使用C或C++编写
+      - 负责Java平台核心库的加载，会搜索sun.boot.class.path中指定位置的类
+      - 可以通过System.getProperty("sun.boot.class.path");获取sun.boot.class.path中指定的路径
+      - 该类加载器无法直接获取    
   - 拓展类加载器（Extension ClassLoader）
-      - 负责将jdk_home/lib/ext目录下的jar包或-Djava.ext.dirs指定目录下的jar包装入工作库
+      - 由Java编写
+      - 默认加载JRE目录/lib/ext/classes中的.class文件
+      - 可以通过System.getProperty("java.ext.dirs");获取java.ext.dirs指定的路径
   - 系统类加载器（System ClassLoader）
-      - 负责classpath或-Djava.class.path所指的目录下的类与jar包装入工作
+      - 也叫应用程序类加载器（Application ClassLoader）
+      - 由java编写
+      - 负责将classpath或-Djava.class.path所指的目录下的类与jar包装入工作
+      - 可以通过System.getProperty("java.class.path");来获取java.class.path指定的路路径
   - 用户自定义加载器（User ClassLoader）
       - 用户自己定义的加载器
-- 
+   
 - 类加载器之间的关系
   - 使用java命令启动JVM时，首先JVM会创建启动类加载器，然后启动类加载器生成拓展类加载器，并将启动类加载器设置为拓展类加载器的父加载器，之后启动类再生成系统类加载器，并将拓展类加载器设置为系统类加载器的父加载器
   - 类加载器的父子关系图（树形结构）
